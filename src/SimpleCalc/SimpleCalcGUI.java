@@ -52,7 +52,7 @@ public class SimpleCalcGUI extends JFrame{
                 String txt1 = String.format("%.0f",result);
                 lblResult.setText(txt1);
             } else if (op.equals("/")) {
-                if(n1 == 0 || n2 == 0){
+                if(n2 == 0){
                     JOptionPane.showMessageDialog(panel1,"Cannot divide by zero");
                     return;
                 }
