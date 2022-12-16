@@ -33,21 +33,34 @@ public class SimpleCalcGUI extends JFrame{
         app.setVisible(true);
     }
 
-    public void operations(){
-        int n1 = Integer.parseInt(tfNumber1.getText());
-        int n2 = Integer.parseInt(tfNumber2.getText());
-        String op = (String) cbOperations.getSelectedItem();
-            int result = 0;
-        if(op.equals("+")) {
-            result = n1 + n2;
-        }else if(op.equals("-")){
-            result = n1-n2;
-        }else if(op.equals("*")){
-            result = n1*n2;
-        }else if(op.equals("/")){
-            result = n1/n2;
-        }
-        lblResult.setText(Integer.toString(result));
-
+    public void operations() {
+        try {
+            double n1 = Integer.parseInt(tfNumber1.getText());
+            double n2 = Integer.parseInt(tfNumber2.getText());
+            String op = (String) cbOperations.getSelectedItem();
+            double result = 0;
+            if (op.equals("+")) {
+                result = n1 + n2;
+                String txt1 = String.format("%.0f",result);
+                lblResult.setText(txt1);
+            } else if (op.equals("-")) {
+                result = n1 - n2;
+                String txt1 = String.format("%.0f",result);
+                lblResult.setText(txt1);
+            } else if (op.equals("*")) {
+                result = n1 * n2;
+                String txt1 = String.format("%.0f",result);
+                lblResult.setText(txt1);
+            } else if (op.equals("/")) {
+                if(n1 == 0 || n2 == 0){
+                    JOptionPane.showMessageDialog(panel1,"Cannot divide by zero");
+                    return;
+                }
+                result = n1 / n2;
+                lblResult.setText(Double.toString(result));
+            }
+       }catch(NumberFormatException e){
+            JOptionPane.showMessageDialog(panel1,"Not a number\nPlease Enter a number!");
+    }
         }
 }
