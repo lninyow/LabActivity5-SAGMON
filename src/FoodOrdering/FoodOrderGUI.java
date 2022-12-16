@@ -20,8 +20,10 @@ public class FoodOrderGUI extends JFrame{
     private JRadioButton rb10;
     private JRadioButton rb15;
 
+
     public FoodOrderGUI(){
         setTitle("Food Ordering System");
+
 
 
         btnOrder.addActionListener(new ActionListener() {
@@ -54,8 +56,28 @@ public class FoodOrderGUI extends JFrame{
             }if(cSundae.isSelected()){
                 sum+=40;
             }
-            String nFormat = String.format("%.2f",sum);
-        JOptionPane.showMessageDialog(panel1,"The total price is Php "+ nFormat);
+
+            if(rbNone.isSelected()){
+                String nFormat = String.format("%.2f",sum);
+                JOptionPane.showMessageDialog(panel1,"The total price is Php "+ nFormat);
+            }else if(rb5.isSelected()){
+                double d1 = sum *.05;
+                sum = sum - d1;
+                String nFormat = String.format("%.2f",sum);
+                JOptionPane.showMessageDialog(panel1,"The total price is Php "+ nFormat);
+            }else if(rb10.isSelected()){
+                double d1 = sum *.10;
+                sum = sum - d1;
+                String nFormat = String.format("%.2f",sum);
+                JOptionPane.showMessageDialog(panel1,"The total price is Php "+ nFormat);
+            }else if(rb15.isSelected()) {
+                double d1 = sum * .15;
+                sum = sum - d1;
+                String nFormat = String.format("%.2f", sum);
+                JOptionPane.showMessageDialog(panel1, "The total price is Php " + nFormat);
+            }
+
+
     }
 
 }
